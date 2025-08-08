@@ -8,15 +8,10 @@ const app = express();
 app.use(express.json());
 
 // Routes
+app.get('/', (req, res) => {res.send('Welcome to the Auth API')});
 app.use('/api', apiRouter);
 
 // Global error handler (should be after routes)
 app.use(errorHandler);
 
 export default app;
-
-type Test = {
-  id: string;
-};
-
-const test: Test = { id: '123' }; // Example variable to ensure the file is not empty
