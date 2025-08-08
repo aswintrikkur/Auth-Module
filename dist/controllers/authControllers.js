@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUserProfile = exports.loginUser = exports.registerUser = void 0;
+exports.logoutUser = exports.getUserProfile = exports.loginUser = exports.registerUser = void 0;
 const userModel_1 = require("../models/userModel");
 const appError_1 = require("../utils/appError");
 const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
@@ -74,5 +74,14 @@ exports.getUserProfile = (0, catchAsync_1.default)(async (req, res, next) => {
     res.status(200).json({
         status: 'success',
         data: data,
+    });
+});
+exports.logoutUser = (0, catchAsync_1.default)(async (req, res, next) => {
+    // Clear the token cookie
+    res.clearCookie('token');
+    // Respond with a success message
+    res.status(200).json({
+        status: 'success',
+        message: 'User logged out successfully',
     });
 });

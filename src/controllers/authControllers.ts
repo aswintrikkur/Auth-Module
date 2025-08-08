@@ -93,6 +93,17 @@ export const getUserProfile = catchAsync(async (req, res, next) => {
   });
 });
 
+export const logoutUser = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // Clear the token cookie
+    res.clearCookie('token');
 
+    // Respond with a success message
+    res.status(200).json({
+      status: 'success',
+      message: 'User logged out successfully',
+    });
+  },
+);
 
 

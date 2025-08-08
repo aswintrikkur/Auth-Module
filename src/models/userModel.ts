@@ -11,6 +11,7 @@ export interface IUser {
     candidatePassword: string,
     userPassword: string,
   ): Promise<boolean>;
+  googleId?: string; // Optional field for OAuth users
 }
 
 const UserSchema: Schema = new Schema<IUser>(
@@ -18,6 +19,10 @@ const UserSchema: Schema = new Schema<IUser>(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    googleId: {
+      type: String,
+      allowNull: true, // This field will only be populated for OAuth users
+    },
   },
   { timestamps: true },
 );

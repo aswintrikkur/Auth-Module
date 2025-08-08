@@ -43,6 +43,10 @@ const UserSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    googleId: {
+        type: String,
+        allowNull: true, // This field will only be populated for OAuth users
+    },
 }, { timestamps: true });
 // 🔹 Hash Password Before Saving
 UserSchema.pre('save', async function (next) {
