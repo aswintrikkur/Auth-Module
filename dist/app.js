@@ -10,8 +10,8 @@ const errorHandlers_1 = require("./middlewares/errorHandlers");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 // Routes
+app.get('/', (req, res) => { res.send('Welcome to the Auth API'); });
 app.use('/api', routes_1.apiRouter);
 // Global error handler (should be after routes)
 app.use(errorHandlers_1.errorHandler);
 exports.default = app;
-const test = { id: '123' }; // Example variable to ensure the file is not empty
